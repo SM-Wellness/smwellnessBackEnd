@@ -5,7 +5,7 @@ import documentBuilder from '@app/config/document-builder';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const PORT = process.env.PORT || 5000
+  const PORT = process.env.PORT || 3333
   app.enableCors();
 
   documentBuilder({
