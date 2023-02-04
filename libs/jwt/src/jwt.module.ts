@@ -1,6 +1,7 @@
 import { Global, Module } from '@nestjs/common';
 import { JwtModule as Jwt, JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
+import { Strategy } from 'passport-jwt';
 
 @Global()
 @Module({
