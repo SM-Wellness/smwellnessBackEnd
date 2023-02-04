@@ -5,6 +5,9 @@ import { ConfigService } from '@nestjs/config';
 import { UserRequestDto } from '../../shared/dto/user-request.dto';
 import { AccessTokenService } from './../token/access-token.service';
 
+const dotenv = require('dotenv');
+dotenv.config();
+
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
   constructor(private readonly configService: ConfigService) {
@@ -12,7 +15,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
       //secretOrKey: configService.get<string>('ACCESS_TOKEN_SECRET_KEY'),
-      secretOrKey: process.env.ACCESS_TOKEN_SECRET_KEY
+      secretOrKey: process.env.ACCESS_TOKEN_SECRET_KEY,
     });
   }
 
