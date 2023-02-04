@@ -1,1 +1,2 @@
-web: npm run deploy
+web: npx generate prisma 
+npm run deploy
