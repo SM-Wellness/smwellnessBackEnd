@@ -1,16 +1,13 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-const dotenv = require('dotenv');
-dotenv.config();
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "mysql"
-  url      = process.env.DATABASE_URL
+  url      = "mysql://sjt2018:smwellness@social-bio.csf3ntecfk6r.ap-northeast-2.rds.amazonaws.com:3306/database_bio"
 }
 
 model User {
