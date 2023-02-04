@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                        Int                         @default(autoincrement()) @id
+  createdAt                 DateTime                    @default(now())
+  updatedAt                 DateTime                    @updatedAt
+  email                     String                      @unique
+  password                  String
+
+  userHealthInfo            UserHealthInfo[]
+  boards                    Boards[]
+}
+
+model UserHealthInfo {
+  id              Int       @id @default(autoincrement())
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  userId          Int       @unique
+  smoking         Int?
+  alcohol         Int?
+  bigThree        Int?
+  bmi             Int?
+  sugarLevel      Int?
+  bloodPressure   Int?
+  todayCalorie    Int?
+  todayWater      Int?
+  todaySteps      Int?
+  liverLevels     Int?
+
+  user            User      @relation(fields: [userId], references: [id])
+}
+
+model Boards {
+  id              Int       @id @default(autoincrement())
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  userId          Int
+  title           String
+  contents        String
+  imgUrl          String
+
+  user            User      @relation(fields: [userId], references: [id])
+}
+
+model dummyData {
+  id              Int       @id @default(autoincrement())
+  smoking         Int?
+  alcohol         Int?
+  bigThree        Int?
+  bmi             Int?
+  sugarLevel      Int?
+  bloodPressure   Int?
+  todayCalorie    Int?
+  todayWater      Int?
+  todaySteps      Int?
+  liverLevels     Int?
+}
