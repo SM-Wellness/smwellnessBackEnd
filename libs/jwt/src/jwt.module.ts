@@ -9,9 +9,9 @@ import { Strategy } from 'passport-jwt';
     Jwt.registerAsync({
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
-        secret: configService.get('ACCESS_TOKEN_SECRET_KEY'),
+        secret: "test",
         signOptions: {
-          expiresIn: configService.get('ACCESS_TOKEN_EXPIRATION_TIME'),
+          expiresIn:"1d",
         },
       }),
     }),
