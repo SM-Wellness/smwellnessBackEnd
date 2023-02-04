@@ -5,7 +5,7 @@ import documentBuilder from '@app/config/document-builder';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const port = process.env.PORT || 8080
+  const PORT = process.env.PORT || 5000
   app.enableCors();
 
   documentBuilder({
@@ -14,6 +14,6 @@ async function bootstrap() {
     description: 'Social Bio Backend API Document',
   });
 
-  await app.listen(port);
+  await app.listen(PORT);
 }
 bootstrap();
