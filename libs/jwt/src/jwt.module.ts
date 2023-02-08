@@ -3,15 +3,17 @@ import { JwtModule as Jwt, JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { Strategy } from 'passport-jwt';
 
+require('dotenv').config();
+
 @Global()
 @Module({
   imports: [
     Jwt.registerAsync({
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
-        secret: "ACCESS_TOKEN_SECRET_KEY",
+        secret:process.env.ACCESS_TOKEN_SECRET_KEY,
         signOptions: {
-          expiresIn:"ACCESS_TOKEN_EXPIRATION_TIME",
+          expiresIn:process.env.ACCESS_TOKEN_EXPIRATION_TIME,
         },
       }),
     }),
