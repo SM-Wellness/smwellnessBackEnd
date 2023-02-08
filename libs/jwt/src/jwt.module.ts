@@ -11,9 +11,9 @@ require('dotenv').config();
     Jwt.registerAsync({
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
-        secret:process.env.ACCESS_TOKEN_SECRET_KEY,
+        secret:"test",
         signOptions: {
-          expiresIn:process.env.ACCESS_TOKEN_EXPIRATION_TIME,
+          expiresIn:"1d",
         },
       }),
     }),

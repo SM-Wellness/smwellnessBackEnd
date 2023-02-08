@@ -3,8 +3,6 @@ import { PassportStrategy } from '@nestjs/passport';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { UserRequestDto } from '../../shared/dto/user-request.dto';
-import * as dotenv from 'dotenv'
-require('dotenv').config();
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
@@ -12,7 +10,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: process.env.ACCESS_TOKEN_SECRET_KEY,
+      secretOrKey: "test",
       
     });
   }
