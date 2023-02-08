@@ -11,9 +11,13 @@ require('dotenv').config();
     Jwt.registerAsync({
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
+<<<<<<< HEAD
         secret:"test",
+=======
+        secret: configService.get('ACCESS_TOKEN_SECRET_KEY'),
+>>>>>>> parent of a30d906 (mola)
         signOptions: {
-          expiresIn:"1d",
+          expiresIn: configService.get('ACCESS_TOKEN_EXPIRATION_TIME'),
         },
       }),
     }),
